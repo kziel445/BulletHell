@@ -9,31 +9,32 @@ public class Movement : MonoBehaviour
 
     float horizontalMove = 0f;
     float verticalMove = 0f;
+    bool collisionEvent = false;
 
     private Rigidbody2D rb;
     [SerializeField] private Camera mainCamera;
     Vector2 vectorMove;
-    // Start is called before the first frame update
     void Awake()
     {
         rb = transform.GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void FixedUpdate()
     {
-        if(Input.GetKey(KeyCode.Q))
+        if(!(collisionEvent
+            && (Input.GetAxisRaw("Horizontal") != 0
+            || Input.GetAxisRaw("Vertical") != 0)))
         {
-            transform.Rotate(new Vector3(0, 0, rotationSpeed * Time.fixedDeltaTime));
+            if (Input.GetKey(KeyCode.Q))
+            {
+                transform.Rotate(new Vector3(0, 0, rotationSpeed * Time.fixedDeltaTime));
+            }
+            if (Input.GetKey(KeyCode.E))
+            {
+                transform.Rotate(new Vector3(0, 0, -1 * rotationSpeed * Time.fixedDeltaTime));
+            }
         }
-        if (Input.GetKey(KeyCode.E))
-        {
-            transform.Rotate(new Vector3(0, 0, -1 * rotationSpeed * Time.fixedDeltaTime));
-        }
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Vector3 mouseWorldPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
@@ -43,5 +44,13 @@ public class Movement : MonoBehaviour
         vectorMove.x = Input.GetAxisRaw("Horizontal");
         vectorMove.y = Input.GetAxisRaw("Vertical");
         rb.MovePosition(rb.position + vectorMove * movementSpeed * Time.fixedDeltaTime);
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        collisionEvent = true;
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        collisionEvent = false;
     }
 }
