@@ -17,6 +17,12 @@ namespace BulletFury.Demo
             StartCoroutine(PlayExplosion(bullet.Position));
         }
 
+        public void OnBulletDie(Vector3 position)
+        {            
+            StartCoroutine(PlayExplosion(position));
+        }
+
+
         private IEnumerator PlayExplosion(Vector3 position)
         {
             var explosion = Instantiate(explosionPrefab, transform);
