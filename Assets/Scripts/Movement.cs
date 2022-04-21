@@ -37,6 +37,7 @@ public class Movement : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            Debug.Log("space");
             Vector3 mouseWorldPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             mouseWorldPosition.z = 0f;
             transform.position = mouseWorldPosition;
