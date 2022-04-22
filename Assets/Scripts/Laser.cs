@@ -5,24 +5,28 @@ using System;
 using UnityEngine.Events;
 using BulletFury.Data;
 
-public class Laser : MonoBehaviour
+namespace Player
 {
-    [SerializeField] private LaserHitEvent OnLaserHit;
-    private void LateUpdate()
+    public class Laser : MonoBehaviour
     {
-        
-    }
-    private void OnTriggerStay2D(Collider2D collision)
-    {          
-        if (collision.gameObject.tag == "Player")
+        [SerializeField] private LaserHitEvent OnLaserHit;
+        private void LateUpdate()
         {
-            collision.gameObject.GetComponent<PlayerStats>().GetDamage();
-            OnLaserHit?.Invoke(collision.gameObject
-                .GetComponent<Collider2D>().ClosestPoint(transform.position));
+
+        }
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            if (collision.gameObject.tag == "Player")
+            {
+                collision.gameObject.GetComponent<PlayerStats>().GetDamage();
+                OnLaserHit?.Invoke(collision.gameObject
+                    .GetComponent<Collider2D>().ClosestPoint(transform.position));
+            }
+        }
+        [Serializable]
+        public class LaserHitEvent : UnityEvent<Vector3>
+        {
         }
     }
-    [Serializable]
-    public class LaserHitEvent : UnityEvent<Vector3>
-    {
-    }
 }
+
