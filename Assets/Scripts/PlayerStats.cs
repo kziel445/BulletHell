@@ -55,11 +55,11 @@ namespace Player
                 health--;
                 StartCoroutine(gameObject.GetComponent<Invulnerable>()
                     .InvulnerableStart());
-            }
-            else
-            {
-                setEndScreen(true);
-                Time.timeScale = 0;
+                if(health == 0)
+                {
+                    setEndScreen(true);
+                    Destroy(gameObject);
+                }
             }
         }
         public void getPoints(int pointsAmount)
