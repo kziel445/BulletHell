@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82dffc9fcebd41c894fc9c65a04b4cda, type: 3}
-  m_Name: BulletSettings 1
+  m_Name: BulletSettings 2
   m_EditorClassIdentifier: 
   mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  material: {fileID: 2100000, guid: c2e2ddcbdeab04711bb4faf283dd1910, type: 2}
+  material: {fileID: 2100000, guid: f116e4c858d67ac4b98665013e6011d0, type: 2}
   plane: 0
   waitToStart: 0
   timeToPlayWhileWaiting: 0.25
@@ -24,7 +24,7 @@ MonoBehaviour:
   size: 0.6
   colliderSize: 0.5
   angularVelocity: 0
-  startColor: {r: 0.7372549, g: 0, b: 0.42228848, a: 1}
+  startColor: {r: 2, g: 0.0921922, b: 0, a: 1}
   useColorOverTime: 1
   colorCurveUsage: 0
   colorCurveTime: 1
@@ -306,4 +306,4 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  isExpanded: 0
+  isExpanded: 1

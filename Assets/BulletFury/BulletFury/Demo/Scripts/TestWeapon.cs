@@ -6,7 +6,7 @@ namespace BulletFury.Demo
 {
     public class TestWeapon : MonoBehaviour
     {
-        [SerializeField] private BulletManager bulletManager = null;
+        [SerializeField] public BulletManager bulletManager = null;
         [SerializeField] private float rotateSpeed = 0f;
 
         private void Awake()
